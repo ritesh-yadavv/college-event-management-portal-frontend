@@ -109,7 +109,7 @@ function Footer() {
               />
               <div>
                 <p className="text-white font-bold text-base">Vaishali Patel</p>
-                <p className="text-sm text-slate-400">MERN Stack Developer</p>
+                
               </div>
             </div>
 
