@@ -160,18 +160,8 @@ const BACKEND_URL = API_URL.replace("/api", "");
                     />
                   ))}
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/20 to-transparent"></div>
 
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="rounded-2xl bg-white/15 backdrop-blur-md border border-white/10 p-4 text-white">
-                      <p className="text-[11px] uppercase tracking-[0.2em] text-slate-200">
-                        Campus Experience
-                      </p>
-                      <h3 className="mt-2 text-lg md:text-xl font-bold">
-                        Discover vibrant academic & cultural events
-                      </h3>
-                    </div>
-                  </div>
+
                 </div>
               </div>
             </div>
