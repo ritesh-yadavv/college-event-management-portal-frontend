@@ -25,27 +25,55 @@ function Home() {
 
 const BACKEND_URL = API_URL.replace("/api", "");
 
-  const categories = [
-    "Technical",
-    "Academic",
-    "Workshop",
-    "Seminar",
-    "Webinar",
-    "Training",
-    "Skill Development",
-    "Research",
-    "Innovation",
-    "Hackathon",
-    "Competition",
-    "Placement",
-    "Career Guidance",
-    "Guest Lecture",
-    "Club Activity",
-    "Cultural",
-    "Fest",
-    "Sports",
-  ];
+ const categories = [
+  // Academic / Technical
+  "Technical",
+  "Academic",
+  "Workshop",
+  "Seminar",
+  "Webinar",
+  "Training",
+  "Skill Development",
+  "Research",
+  "Innovation",
+  "Hackathon",
 
+  // Career / Growth
+  "Placement",
+  "Career Guidance",
+  "Guest Lecture",
+
+  // Competitions
+  "Competition",
+  "Quiz",
+  "Coding Contest",
+  "Debate",
+  "Presentation",
+
+  // Cultural / Fun 🔥
+  "Cultural",
+  "Fest",
+  "Freshers Party",
+  "Farewell Party",
+  "DJ Night",
+  "Talent Show",
+  "Open Mic",
+  "Dance",
+  "Music",
+  "Drama",
+  "Fashion Show",
+
+  // Clubs & Activities
+  "Club Activity",
+  "Literary",
+  "Photography",
+  "Art & Craft",
+
+  // Sports
+  "Sports",
+  "Tournament",
+  "E-Sports",
+];
   const fetchEvents = async () => {
     try {
       const res = await API.get(`/events?search=${search}&category=${category}`);
@@ -159,8 +187,6 @@ const BACKEND_URL = API_URL.replace("/api", "");
                       }`}
                     />
                   ))}
-
-
 
                 </div>
               </div>

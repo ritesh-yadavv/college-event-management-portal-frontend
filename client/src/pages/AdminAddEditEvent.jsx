@@ -6,26 +6,55 @@ function AdminAddEditEvent() {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const categories = [
-    "Technical",
-    "Academic",
-    "Workshop",
-    "Seminar",
-    "Webinar",
-    "Training",
-    "Skill Development",
-    "Research",
-    "Innovation",
-    "Hackathon",
-    "Competition",
-    "Placement",
-    "Career Guidance",
-    "Guest Lecture",
-    "Club Activity",
-    "Cultural",
-    "Fest",
-    "Sports",
-  ];
+const categories = [
+  // Academic / Technical
+  "Technical",
+  "Academic",
+  "Workshop",
+  "Seminar",
+  "Webinar",
+  "Training",
+  "Skill Development",
+  "Research",
+  "Innovation",
+  "Hackathon",
+
+  // Career / Growth
+  "Placement",
+  "Career Guidance",
+  "Guest Lecture",
+
+  // Competitions
+  "Competition",
+  "Quiz",
+  "Coding Contest",
+  "Debate",
+  "Presentation",
+
+  // Cultural / Fun 🔥
+  "Cultural",
+  "Fest",
+  "Freshers Party",
+  "Farewell Party",
+  "DJ Night",
+  "Talent Show",
+  "Open Mic",
+  "Dance",
+  "Music",
+  "Drama",
+  "Fashion Show",
+
+  // Clubs & Activities
+  "Club Activity",
+  "Literary",
+  "Photography",
+  "Art & Craft",
+
+  // Sports
+  "Sports",
+  "Tournament",
+  "E-Sports",
+];
 
   const [form, setForm] = useState({
     title: "",
@@ -41,11 +70,12 @@ function AdminAddEditEvent() {
   const [imageFile, setImageFile] = useState(null);
 
   const isEditMode = Boolean(id);
- const API_URL =
-  import.meta.env.VITE_API_URL ||
-  "https://college-event-management-portal-backend.onrender.com/api";
 
-const BACKEND_URL = API_URL.replace("/api", "");s
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    "https://college-event-management-portal-backend.onrender.com/api";
+
+  const BACKEND_URL = API_URL.replace("/api", "");
 
   const fetchSingleEvent = async () => {
     try {
