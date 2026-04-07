@@ -6,55 +6,44 @@ function AdminAddEditEvent() {
   const navigate = useNavigate();
   const { id } = useParams();
 
-const categories = [
-  // Academic / Technical
-  "Technical",
-  "Academic",
-  "Workshop",
-  "Seminar",
-  "Webinar",
-  "Training",
-  "Skill Development",
-  "Research",
-  "Innovation",
-  "Hackathon",
-
-  // Career / Growth
-  "Placement",
-  "Career Guidance",
-  "Guest Lecture",
-
-  // Competitions
-  "Competition",
-  "Quiz",
-  "Coding Contest",
-  "Debate",
-  "Presentation",
-
-  // Cultural / Fun 🔥
-  "Cultural",
-  "Fest",
-  "Freshers Party",
-  "Farewell Party",
-  "DJ Night",
-  "Talent Show",
-  "Open Mic",
-  "Dance",
-  "Music",
-  "Drama",
-  "Fashion Show",
-
-  // Clubs & Activities
-  "Club Activity",
-  "Literary",
-  "Photography",
-  "Art & Craft",
-
-  // Sports
-  "Sports",
-  "Tournament",
-  "E-Sports",
-];
+  const categories = [
+    "Technical",
+    "Academic",
+    "Workshop",
+    "Seminar",
+    "Webinar",
+    "Training",
+    "Skill Development",
+    "Research",
+    "Innovation",
+    "Hackathon",
+    "Placement",
+    "Career Guidance",
+    "Guest Lecture",
+    "Competition",
+    "Quiz",
+    "Coding Contest",
+    "Debate",
+    "Presentation",
+    "Cultural",
+    "Fest",
+    "Freshers Party",
+    "Farewell Party",
+    "DJ Night",
+    "Talent Show",
+    "Open Mic",
+    "Dance",
+    "Music",
+    "Drama",
+    "Fashion Show",
+    "Club Activity",
+    "Literary",
+    "Photography",
+    "Art & Craft",
+    "Sports",
+    "Tournament",
+    "E-Sports",
+  ];
 
   const [form, setForm] = useState({
     title: "",
@@ -68,7 +57,6 @@ const categories = [
   });
 
   const [imageFile, setImageFile] = useState(null);
-
   const isEditMode = Boolean(id);
 
   const API_URL =
@@ -91,12 +79,15 @@ const categories = [
         image: res.data.image || "",
       });
     } catch (error) {
-      console.error(error);
+      console.error("Fetch single event error:", error);
+      alert(error.response?.data?.message || "Failed to load event");
     }
   };
 
   useEffect(() => {
-    if (isEditMode) fetchSingleEvent();
+    if (isEditMode) {
+      fetchSingleEvent();
+    }
   }, [id]);
 
   const submitHandler = async (e) => {
@@ -122,25 +113,27 @@ const categories = [
         formData.append("image", imageFile);
       }
 
+      let res;
+
       if (isEditMode) {
-        const res = await API.put(`/events/${id}`, formData, {
+        res = await API.put(`/events/${id}`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         });
-        alert(res.data.message);
       } else {
-        const res = await API.post("/events", formData, {
+        res = await API.post("/events", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         });
-        alert(res.data.message);
       }
 
+      alert(res.data.message);
       navigate("/admin/events");
     } catch (error) {
-      console.error(error);
+      console.error("Event form submit error:", error);
+      console.error("Server response:", error.response?.data);
       alert(error.response?.data?.message || "Operation failed");
     }
   };
@@ -247,7 +240,7 @@ const categories = [
             type="file"
             accept="image/*"
             className="rounded-xl border border-slate-200 px-4 py-3"
-            onChange={(e) => setImageFile(e.target.files[0])}
+            onChange={(e) => setImageFile(e.target.files[0] || null)}
           />
         </div>
 
